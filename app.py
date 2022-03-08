@@ -1,4 +1,5 @@
 import flask
+import random
 
 app = flask.Flask(__name__)
 
@@ -21,5 +22,17 @@ def index():
 
 
 app.register_blueprint(bp)
+
+
+@app.route("/fun_fact")
+def fun_fact():
+    fun_facts = [
+        "The word bed looks like a bed",
+        "If you shuffle a deck of cards, it is more likely than not that you have a configuration of cards that has never been seen before in human history",
+        "The original Roller Coaster Tycoon was written by one person in assembly language",
+    ]
+    fact = random.choice(fun_facts)
+    return flask.jsonify({"fact": fact})
+
 
 app.run()
