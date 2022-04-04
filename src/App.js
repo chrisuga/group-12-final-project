@@ -1,26 +1,40 @@
 import './App.css';
-import {useState} from 'react'
+import { useState, useEffect } from 'react';
+import { Cards } from './Cards';
 
 function App() {
-  const [fact, setFact] = useState("");
-  function handleClick() {
-    fetch('/fun_fact', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
+
+  const [factList, setFactList] = useState([])
+  
+  const getFactList = async () => {
+    const data = fetch("/get_facts").then(response => {
+      if (response.ok) {
+        return response.json()
       }
-    }).then((response) => response.json())
-    .then((data) => {
-      setFact(data.fact);
-    });
+    }).then(data => console.log(data["facts"]))
+    .then(data => setFactList(data["facts"]))
   }
+  
+  //function handleClick() {
+  //  fetch('/get_facts', {
+  //    method: 'GET',
+  //    headers: {
+  //      'Content-Type': 'application/json',
+  //    }
+  //  }).then((response) => response.json())
+  //  .then((data) => {
+  //    setFact(data.fact);
+  //  });
+
+  useEffect(() => {
+    getFactList();
+  }, [])
+
   return (
-    <div className="App">
-      <button onClick={handleClick}>Click me!</button>
-      <br></br>
-      {fact}
-    </div>
-  );
+    <>
+      <h2>This is rendered from the App.js file.</h2>
+    </>
+  )
 }
 
 export default App;
