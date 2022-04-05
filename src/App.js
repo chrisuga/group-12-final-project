@@ -11,20 +11,11 @@ function App() {
       if (response.ok) {
         return response.json()
       }
-    }).then(data => console.log(data["facts"]))
-    .then(data => setFactList(data["facts"]))
+    }).then(data => console.log(data.facts))
+    .then(data => setFactList(data))
+
+
   }
-  
-  //function handleClick() {
-  //  fetch('/get_facts', {
-  //    method: 'GET',
-  //    headers: {
-  //      'Content-Type': 'application/json',
-  //    }
-  //  }).then((response) => response.json())
-  //  .then((data) => {
-  //    setFact(data.fact);
-  //  });
 
   useEffect(() => {
     getFactList();
@@ -32,7 +23,10 @@ function App() {
 
   return (
     <>
-      <h2>This is rendered from the App.js file.</h2>
+      <h2>App.js</h2>
+      <Cards 
+        listOfFacts={factList}
+      />
     </>
   )
 }
