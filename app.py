@@ -58,10 +58,6 @@ def format_fact(fact):
         "verified": fact.verified,
     }
 
-# set up a separate route to serve the index.html file generated
-# by create-react-app/npm run build.
-# By doing this, we make it so you can paste in all your old app routes
-# from Milestone 2 without interfering with the functionality here.
 bp = flask.Blueprint(
     "bp",
     __name__,
@@ -84,6 +80,7 @@ def return_facts():
     for fact in facts:
         fact_list.append(format_fact(fact))
     return {"facts": fact_list}
+
 
 app.run(
     host=os.getenv("IP", "127.0.0.1"), port=int(os.getenv("PORT", "8080")), debug=True
