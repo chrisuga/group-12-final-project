@@ -8,11 +8,12 @@ function App() {
   
   const getFactList = async () => {
     const data = fetch("/get_facts").then(response => {
-      if (response.ok) {
-        return response.json()
-      }
-    }).then(data => console.log(data["facts"]))
-    .then(data => setFactList(data["facts"]))
+        if (response.ok) {
+          return response.json()
+        }
+      }).then(data => setFactList(data.facts))
+
+      console.log(factList)
   }
   
   //function handleClick() {
@@ -33,6 +34,9 @@ function App() {
   return (
     <>
       <h2>This is rendered from the App.js file.</h2>
+      <Cards 
+        factList={listOfFacts}
+      />
     </>
   )
 }
