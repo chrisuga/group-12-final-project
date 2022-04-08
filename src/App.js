@@ -35,7 +35,7 @@ function App() {
     <>
       <h2>This is rendered from the App.js file.</h2>
       <Cards 
-        factList={listOfFacts}
+        listOfFacts={factList}
       />
     </>
   )
