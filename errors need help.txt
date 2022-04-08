@@ -1,3 +1,0 @@
-app.js fetch("/get_facts")
-can't read the fact list from the dictionary, thinks it's undefined
-
