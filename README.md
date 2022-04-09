@@ -97,11 +97,11 @@ You will need to install the following on your host before deployment
 
 ### Installation
 
-1. Get a free Email API Key at [https://www.yelp.com/developers](https://www.yelp.com/developers)
+1. Get a free Email API Key at
 2. Setup a Heroku repository [https://www.heroku.com/](https://www.heroku.com/)
 3. Clone the repo
    ```sh
-   git clone https://github.com/naimam/4350-Group-11-Project.git
+   git clone https://github.com/chrisuga/group-12-final-project.git
    ```
 4. Install NPM packages
    ```sh
