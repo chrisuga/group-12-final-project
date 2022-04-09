@@ -85,6 +85,31 @@ def return_facts():
         fact_list.append(format_fact(fact))
     return {"facts": fact_list}
 
+@app.route("/get_random_fact", methods=["GET"])
+def return_random_fact():
+    facts = Facts.query.order_by(Facts.id.asc()).all()
+    fact_list = []
+    for fact in facts:
+        fact_list.append(format_fact(fact))
+    random_index = random.randrange(0, len(fact_list))
+    print(random_index)
+    print(flask.jsonify(fact_list[random_index]))
+    return flask.jsonify(fact_list[random_index])
+
+@app.route("/fact", methods=["POST"])
+def post_fact():
+    request_data = flask.json.loads(flask.request.data)
+    fact = Facts(
+        submitter = request_data["submitter"],
+        info = request_data["info"],
+        source = request_data["source"],
+        verified = request_data["verified"],
+    )
+    db.session.add(fact)
+    db.session.commit()
+    print(fact)
+    return format_fact(fact)
+
 app.run(
-    host=os.getenv("IP", "127.0.0.1"), port=int(os.getenv("PORT", "8080")), debug=True
+    host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", "8080")), debug=True
 )

@@ -2,6 +2,7 @@ import React from 'react';
 
 export const Cards = ({ listOfFacts }) => {
 
+  console.log()
   const factDisplay = listOfFacts.map(fact =>
     <div>
       <ul>
@@ -19,6 +20,7 @@ export const Cards = ({ listOfFacts }) => {
 
   return (
     <>
+      <h1>This is rendered from the Cards.js file</h1>
       {factDisplay}
     </>
   )

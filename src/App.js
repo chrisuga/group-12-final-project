@@ -5,7 +5,7 @@ import { Cards } from './Cards';
 function App() {
 
   const [factList, setFactList] = useState([])
-  
+
   const getFactList = async () => {
     const data = fetch("/get_facts").then(response => {
         if (response.ok) {
@@ -13,19 +13,16 @@ function App() {
         }
       }).then(data => setFactList(data.facts))
 
-      console.log(factList)
+    console.log(factList)
   }
-  
-  //function handleClick() {
-  //  fetch('/get_facts', {
-  //    method: 'GET',
-  //    headers: {
-  //      'Content-Type': 'application/json',
-  //    }
-  //  }).then((response) => response.json())
-  //  .then((data) => {
-  //    setFact(data.fact);
-  //  });
+
+  const getRandomFact = async () => {
+    const data = fetch("/get_random_fact").then(response => {
+        if (response.ok) {
+          return response.json()
+        }
+      })
+  }
 
   useEffect(() => {
     getFactList();
@@ -33,7 +30,7 @@ function App() {
 
   return (
     <>
-      <h2>This is rendered from the App.js file.</h2>
+      <h2>This is rendered from the App.js file</h2>
       <Cards 
         listOfFacts={factList}
       />
