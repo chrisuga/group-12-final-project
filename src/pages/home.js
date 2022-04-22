@@ -17,20 +17,28 @@ export const Home = function () {
         window.location.assign(url);
     };
 
-    useEffect(() => {
-        fetch(`${process.env.PUBLIC_URL}/api/TBD`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-        }).then((response) => response.json()).then((data) => {
-            setFactData(data.data);
-        });
+    const getFactList = async () => {
+        console.log("inside getFactList")
+        const data = fetch("/get_facts")
+          .then(response => {
+            if (response.ok) {
+              return response.json()
+            }})
+          .then(data => setFactList(data["facts"]))
+    }
 
-   
+    const logFactList = () => {
+        console.log(factList);
+    }
+
+    useEffect(() => {
+        getFactList();
     }, []);
 
 
     return (
         <Container>
+            {logFactList()}
             <h1 className="mt-4 mb-3">New random facts</h1>
 
             <Carousel variant="dark" className="m-3">

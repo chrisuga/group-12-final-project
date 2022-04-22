@@ -69,7 +69,7 @@ const AddRecipe = function () {
                 </Form.Control.Feedback>
             </InputGroup>
 
-            </InputGroup>
+            
             <Image className="fact-picture" src={picture ? pictureURL : logo} rounded />
             <Button className="add-fact-btn" size="lg" variant="dark" onClick={handleSubmit}>Submit</Button>
             {
