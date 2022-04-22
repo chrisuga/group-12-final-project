@@ -7,7 +7,7 @@ import random
 
 load_dotenv(find_dotenv())
 
-app = flask.Flask(__name__, templates_folder="/static/react/")
+app = flask.Flask(__name__, template_folder="/static/react/")
 
 app.secret_key = os.getenv("secret_key")
 
