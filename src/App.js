@@ -7,13 +7,13 @@ function App() {
   const [factList, setFactList] = useState([])
 
   const getFactList = async () => {
-    const data = fetch("/get_facts").then(response => {
+    console.log("inside getFactList")
+    const data = fetch("/get_facts")
+      .then(response => {
         if (response.ok) {
           return response.json()
-        }
-      }).then(data => setFactList(data.facts))
-
-    console.log(factList)
+        }})
+      .then(data => console.log(data["facts"]))
   }
 
   const getRandomFact = async () => {
@@ -30,10 +30,9 @@ function App() {
 
   return (
     <>
+    {console.log(factList)}
       <h2>This is rendered from the App.js file</h2>
-      <Cards 
-        listOfFacts={factList}
-      />
+
     </>
   )
 }

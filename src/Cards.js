@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const Cards = ({ listOfFacts }) => {
+  const [factList, setFactList] = useState([])
 
   console.log()
   const factDisplay = listOfFacts.map(fact =>

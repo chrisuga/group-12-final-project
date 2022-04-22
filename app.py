@@ -10,7 +10,7 @@ load_dotenv(find_dotenv())
 app = flask.Flask(__name__)
 
 app.secret_key = os.getenv("secret_key")
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URL')
+#app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv('DATABASE_URL')
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
@@ -40,14 +40,30 @@ class Facts(db.Model):
 db.drop_all()
 db.create_all()
 
-fact1_info = "Intel's 12th gen processor line has twice as many cores as the previous gen."
-fact1 = Facts(submitter = "cuga1", 
-    info = fact1_info, 
+fact1 = Facts(
+    submitter = "cuga1", 
+    info = "Intel's 12th gen processor line has twice as many cores as the previous gen.", 
     source = "", 
     verified = True
 )
 
+fact2 = Facts(
+    submitter = "cuga1",
+    info = "The self is all that can be known to be true.",
+    source = "Rene Descartes",
+    verified = False 
+)
+
+fact3 = Facts(
+    submitter = "cuga1",
+    info = "Sunflowers are named from their ability to stay facing towards the sun.",
+    source = "someone who likes sunflowers",
+    verified = True
+)
+
 db.session.add(fact1)
+db.session.add(fact2)
+db.session.add(fact3)
 db.session.commit()
 
 def format_fact(fact):
