@@ -1,5 +1,5 @@
 Flask
-Flask-SQLAlchemy
+Flask_SQLAlchemy
 requests
 python-dotenv
 psycopg2
