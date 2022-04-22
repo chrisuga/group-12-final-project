@@ -80,8 +80,7 @@ As a group, our goal is to deliver an app that would combine the structures of o
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get started you will need to install some frameworks. The frontend of our website was written in React to display user interfaces in a visually appealing way. The code that powers the backend of our website is in Python, using Flask. Flask Login will be used to manage user sessions. The app is deployed using Heroku. Heroku will also be used to storet he database using Heroku Postgres. Flask SQLAlchemy will be used to create the database models. The Zomato API is used to find restaurants based on a user’s location, and the Edamam Recipe API to find recipes given the user's input of ingredients.
-
+To get started you will need to install some frameworks. The frontend of our website was written in React to display user interfaces in a visually appealing way. The code that powers the backend of our website is in Python, using Flask. Flask Login will be used to manage user sessions. The app is deployed using Heroku. Heroku will also be used to storet he database using Heroku Postgres. Flask SQLAlchemy will be used to create the database models. An COMMUNICATIONS API will be used to send out verification information which can ensure integrity of the facts submitted.
 
 ### Prerequisites
 
