@@ -2,12 +2,13 @@ import flask
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import find_dotenv, load_dotenv
 import os
-import flask
+import re
 import random
+import psycopg2
 
 load_dotenv(find_dotenv())
 
-app = flask.Flask(__name__, template_folder="/static/react/")
+app = flask.Flask(__name__)
 
 app.secret_key = os.getenv("secret_key")
 
@@ -41,7 +42,6 @@ class Facts(db.Model):
         self.source = source
         self.verified = verified
 
-db.drop_all()
 db.create_all()
 
 fact1 = Facts(
