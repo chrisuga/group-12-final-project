@@ -1,10 +1,11 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { Cards } from './Cards';
+import { Home } from './pages/home';
 
 function App() {
 
-  const [factList, setFactList] = useState([])
+  /*const [factList, setFactList] = useState([])
 
   const getFactList = async () => {
     console.log("inside getFactList")
@@ -26,15 +27,17 @@ function App() {
 
   useEffect(() => {
     getFactList();
-  }, [])
+  }, [])*/
 
   return (
     <>
-    {console.log(factList)}
-      <h2>This is rendered from the App.js file</h2>
-
+    
+        <Home />
     </>
   )
 }
+
+/*{console.log(factList)}
+      <h2>This is rendered from the App.js file</h2>*/
 
 export default App;

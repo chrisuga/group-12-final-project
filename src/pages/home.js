@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom'
 import {
     Card, Row, Col, Carousel, Container, Button, ListGroup,
 } from 'react-bootstrap';
-import Grading from '../components/Grading';
 
-const Home = function () {
+//import Grading from '../components/Grading';
+
+export const Home = function () {
     const wide = 7;
     const [factList, setFactList] = useState([]);
 
@@ -72,4 +74,3 @@ const Home = function () {
     );
 };
 
-export default Home;
