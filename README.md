@@ -72,6 +72,7 @@ As a group, our goal is to deliver an app that would combine the structures of o
 * [Flask](https://flask.palletsprojects.com/)
 * [Bootstrap](https://getbootstrap.com/)
 * [Heroku](https://www.heroku.com/)
+* [Abstract](https://www.abstractapi.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -96,7 +97,7 @@ You will need to install the following on your host before deployment
 
 ### Installation
 
-1. Get a free Email API Key at
+1. Get a free Email API Key at [https://www.abstractapi.com/](https://www.abstractapi.com/)
 2. Setup a Heroku repository [https://www.heroku.com/](https://www.heroku.com/)
 3. Clone the repo
    ```sh
@@ -200,10 +201,10 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-Javed Usman [(ujaved1@student.gsu.edu)](mailto:ujaved1@student.gsu.edu)
-Phan Henry [(hphan19@student.gsu.edu)](mailto:hphan19@student.gsu.edu)
-Uga Christopher [(cuga1@student.gsu.edu)](mailto:cuga1@student.gsu.edu)
-Yen Andrew [(ayen4@student.gsu.edu)](mailto:ayen4@student.gsu.edu)
+* Javed Usman [(ujaved1@student.gsu.edu)](mailto:ujaved1@student.gsu.edu)
+* Phan Henry [(hphan19@student.gsu.edu)](mailto:hphan19@student.gsu.edu)
+* Uga Christopher [(cuga1@student.gsu.edu)](mailto:cuga1@student.gsu.edu)
+* Yen Andrew [(ayen4@student.gsu.edu)](mailto:ayen4@student.gsu.edu)
 
 Project Link: [https://github.com/chrisuga/group-12-final-project](https://github.com/chrisuga/group-12-final-project)
 
