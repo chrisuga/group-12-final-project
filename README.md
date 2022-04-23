@@ -10,7 +10,7 @@
 <h3 align="center">Debonair Software</h3>
 
   <p align="center">
-    Debonair Software aim's to deliver an web application that allows users to find facts that other's share and verify and utilize them. Heroku Link [https://afternoon-sierra-99947.herokuapp.com/](https://afternoon-sierra-99947.herokuapp.com/)
+    Debonair Software aim's to deliver an web application that allows users to find facts that other's share and verify and utilize them. Heroku Link https://afternoon-sierra-99947.herokuapp.com/
     <br />
     <a href="https://github.com/chrisuga/group-12-final-project"><strong>Explore the docs »</strong></a>
     <br />
