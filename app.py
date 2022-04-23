@@ -1,10 +1,15 @@
 import flask
-from flask_sqlalchemy import SQLAlchemy
-from dotenv import find_dotenv, load_dotenv
 import os
 import re
 import random
 import psycopg2
+
+from flask_sqlalchemy import SQLAlchemy
+from dotenv import find_dotenv, load_dotenv
+from requests import session
+from flask_login import LoginManager, UserMixin, login_user, current_user, login_required
+login_manager = LoginManager()
+
 
 load_dotenv(find_dotenv())
 
@@ -17,14 +22,26 @@ if uri.startswith("postgres://"):
     uri = uri.replace("postgres://", "postgresql://", 1)
 app.config["SLQALCHEMY_DATABASE_URI"] = uri
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.filter_by(username=user_id).first()
+
+login_manager.login_view = "login"
+
+
 
 db = SQLAlchemy(app)
 
-class Users(db.Model):
+class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(999), nullable=False)
     role = db.Column(db.String(20), nullable = False)
+
+    def get_id(self):
+        return self.username
 
 class Facts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -89,8 +106,49 @@ bp = flask.Blueprint(
     template_folder="./static/react",
 )
 
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
+    if flask.request.method == "GET":
+        return flask.render_template("signup.html")
+    
+    data = flask.request.form
+    username_from_form = data["username"]
+    if username_from_form is None or username_from_form == "":
+        flask.flash("Username must be inputted")
+        return flask.render_template("signup.html")
+
+    match = User.query.filter_by(username=username_from_form).first()
+    if match is not None:
+        flask.flash("Username already taken, please go be creative")
+        return flask.render_template("signup.html")
+    else:
+        new_use = User(username=username_from_form)
+        db.session.add(new_user)
+        db,session.commit()
+        flask.flash("Account has been created!")
+        return flask.render_template("login.html")
+
+@app.route("/login")
+def login():
+    if flask.request.method == "GET":
+        return flask.render_template("login.html")
+    data = flask.request.form
+    username_from_form = data["username"]
+
+    match = User.query.filter_by(username=username_from_form).first()
+
+    if match is None:
+            flask.flash("We have searched but it seems you're not on the list")
+            return flask.render_template("login.html")
+    else:
+        login_user(match)
+        return flask.redirect("/")
+
+
+
 # route for serving React page
 @bp.route("/")
+@login_required
 def index():
     # NB: DO NOT add an "index.html" file in your normal templates folder
     # Flask will stop serving this React page correctly
