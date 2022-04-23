@@ -3,6 +3,8 @@ import os
 import re
 import random
 import psycopg2
+import requests
+import json
 
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import find_dotenv, load_dotenv
@@ -12,6 +14,7 @@ login_manager = LoginManager()
 
 
 load_dotenv(find_dotenv())
+BASE_URL = "https://emailvalidation.abstractapi.com/v1/ "
 
 app = flask.Flask(__name__)
 
@@ -189,6 +192,17 @@ def post_fact():
     print(fact)
     return format_fact(fact)
 
+def email_auth():
+    query_params = {
+        "api-key": os.getenv("ABSTRACT_KEY"),
+        "email": "johnsmith@gmail.com"
+    }
+
+    response = requests.get(BASE_URL, params=query_params,)
+    authentication = response.json()["email"]["deliverability"]["quality_score"]
+    
+    print(authentication)
+    
 app.run(
     host=os.getenv("IP", "0.0.0.0"), port=int(os.getenv("PORT", "8080")), debug=True
 )
